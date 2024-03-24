@@ -6,13 +6,14 @@
 /*   By: bedarenn <bedarenn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 17:03:58 by bedarenn          #+#    #+#             */
-/*   Updated: 2024/03/02 17:30:00 by bedarenn         ###   ########.fr       */
+/*   Updated: 2024/03/24 16:50:25 by bedarenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef W_CONST_H
 # define W_CONST_H
 
-# define MS 1000
+# define MS 1024
+# define MAX 8196
 
 #endif

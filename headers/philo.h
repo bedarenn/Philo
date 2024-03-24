@@ -6,7 +6,7 @@
 /*   By: bedarenn <bedarenn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 15:54:33 by bedarenn          #+#    #+#             */
-/*   Updated: 2024/03/09 13:18:53 by bedarenn         ###   ########.fr       */
+/*   Updated: 2024/03/24 16:40:23 by bedarenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,16 +48,18 @@ void	*m_philo(void *ptr);
 void	*m_philo_time(void *ptr);
 
 /*    Manage Fork    */
-void	fork_lock(t_philo *philo);
+void	*fork_lock(t_philo *philo);
 void	fork_unlock(t_fork *fork);
 void	*undertaker(t_philo *philo, t_tv t, void *ptr);
-int		get_end(t_arg *arg);
 
 /*    Print philo    */
-void	print_fork(size_t id, t_arg *arg);
-void	print_eating(t_tv t, size_t id, t_arg *arg);
-void	print_sleeping(size_t id, t_arg *arg);
-void	print_thinking(size_t id, t_arg *arg);
-void	print_died(t_tv t, size_t id, t_arg *arg);
+void	*print_fork(t_philo *philo);
+void	*print_eating(t_tv t, t_philo *philo);
+void	*print_sleeping(t_philo *philo);
+void	*print_thinking(t_philo *philo);
+void	*print_died(t_tv t, t_philo *philo);
+
+/*    WATI_SLEEP    */
+t_philo	*wati_sleep(t_philo *philo, t_tv last, t_ltime time);
 
 #endif

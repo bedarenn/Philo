@@ -6,7 +6,7 @@
 /*   By: bedarenn <bedarenn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 14:23:37 by bedarenn          #+#    #+#             */
-/*   Updated: 2024/03/09 11:55:17 by bedarenn         ###   ########.fr       */
+/*   Updated: 2024/03/24 15:48:47 by bedarenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,5 @@ void	free_philos(t_thrd	*list)
 	if (list->next)
 		free_philos(list->next);
 	free(list);
-	pthread_mutex_destroy(&list->philo.fork.right);
+	//pthread_mutex_destroy(&list->philo.fork.right);
 }
