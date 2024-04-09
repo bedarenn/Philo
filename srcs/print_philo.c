@@ -6,7 +6,7 @@
 /*   By: bedarenn <bedarenn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 13:57:40 by bedarenn          #+#    #+#             */
-/*   Updated: 2024/03/24 15:54:22 by bedarenn         ###   ########.fr       */
+/*   Updated: 2024/04/09 15:46:30 by bedarenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 void	*print_fork(t_philo *philo)
 {
 	t_tv	t;
-	t_ltime	diff;
 
 	gettimeofday(&t, NULL);
 	pthread_mutex_lock(&philo->arg->m_print);
@@ -26,7 +25,7 @@ void	*print_fork(t_philo *philo)
 		return (NULL);
 	}
 	printf("%06li %zu has taken a fork\n",
-		diff = diff_timeval(t, philo->arg->start) / 1000,
+		diff_timeval(t, philo->arg->start) / 1000,
 		philo->id);
 	pthread_mutex_unlock(&philo->arg->m_print);
 	return (philo);

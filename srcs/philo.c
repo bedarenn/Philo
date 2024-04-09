@@ -6,7 +6,7 @@
 /*   By: bedarenn <bedarenn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 18:46:02 by bedarenn          #+#    #+#             */
-/*   Updated: 2024/03/24 16:57:10 by bedarenn         ###   ########.fr       */
+/*   Updated: 2024/04/09 15:34:55 by bedarenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static void	*manage_meal(t_philo *philo, t_meal *meal)
 		fork_unlock(&philo->fork);
 		return (NULL);
 	}
-	wati_sleep(philo, meal->last, philo->arg->eattime);
+	usleep(philo->arg->eattime);
 	fork_unlock(&philo->fork);
 	return (philo);
 }
@@ -85,7 +85,7 @@ static void	*sleep_and_think(t_philo *philo, t_tv last)
 	(void)last;
 	if (!print_sleeping(philo))
 		return (NULL);
-	wati_sleep(philo, last, philo->arg->sleeptime);
+	usleep(philo->arg->sleeptime);
 	if (!print_thinking(philo))
 		return (NULL);
 	return (philo);

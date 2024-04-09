@@ -6,7 +6,7 @@
 #    By: bedarenn <bedarenn@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/25 23:28:11 by bedarenn          #+#    #+#              #
-#    Updated: 2024/03/24 16:15:45 by bedarenn         ###   ########.fr        #
+#    Updated: 2024/04/09 15:46:48 by bedarenn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,8 +26,7 @@ SRCS = \
 	manage_philo.c \
 	thread_laucher.c \
 	philo.c \
-	print_philo.c \
-	wati_sleep.c \
+	print_philo_emoji.c \
 	main.c
 
 OBJS = $(addprefix $(DIR_OBJS), $(SRCS:%.c=%.o))
