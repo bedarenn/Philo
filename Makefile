@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bedarenn <bedarenn@student.42.fr>          +#+  +:+       +#+         #
+#    By: bedarenn <bedarenn@student.42angouleme.fr> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/25 23:28:11 by bedarenn          #+#    #+#              #
-#    Updated: 2024/04/09 15:46:48 by bedarenn         ###   ########.fr        #
+#    Updated: 2024/05/22 10:50:14 by bedarenn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,15 +18,14 @@ DIR_INCL = headers/
 DIR_LIBS = libs/
 
 SRCS = \
-	w_atoi.c \
-	w_timeval.c \
+	philo_utils.c \
+	thread_laucher.c \
+	print_philo_emoji.c \
 	manage_arg.c \
 	manage_fork.c \
 	manage_thrd.c \
 	manage_philo.c \
-	thread_laucher.c \
 	philo.c \
-	print_philo_emoji.c \
 	main.c
 
 OBJS = $(addprefix $(DIR_OBJS), $(SRCS:%.c=%.o))

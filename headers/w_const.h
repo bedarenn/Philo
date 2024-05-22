@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   w_const.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bedarenn <bedarenn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bedarenn <bedarenn@student.42angouleme.fr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 17:03:58 by bedarenn          #+#    #+#             */
-/*   Updated: 2024/04/09 15:34:19 by bedarenn         ###   ########.fr       */
+/*   Updated: 2024/05/22 10:46:24 by bedarenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef W_CONST_H
 # define W_CONST_H
 
-# define MS 1024
-# define MAX 8196
+# define MS 1000
+# define S_US 1000000
 
 #endif

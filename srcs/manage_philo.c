@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   manage_philo.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bedarenn <bedarenn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bedarenn <bedarenn@student.42angouleme.fr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 14:23:37 by bedarenn          #+#    #+#             */
-/*   Updated: 2024/03/24 15:48:47 by bedarenn         ###   ########.fr       */
+/*   Updated: 2024/05/22 10:37:22 by bedarenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <philo.h>
+#include "philo.h"
 #include <stdlib.h>
 
 t_thrd	*create_philos(size_t count, t_arg *arg)

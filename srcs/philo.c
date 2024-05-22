@@ -3,20 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bedarenn <bedarenn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bedarenn <bedarenn@student.42angouleme.fr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 18:46:02 by bedarenn          #+#    #+#             */
-/*   Updated: 2024/04/09 15:34:55 by bedarenn         ###   ########.fr       */
+/*   Updated: 2024/05/22 10:58:12 by bedarenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <philo.h>
 #include <stdio.h>
 #include <unistd.h>
 
-static void	*manage_meal(t_philo *philo, t_meal *meal);
-static void	*sleep_and_think(t_philo *philo, t_tv last);
-static void	*die_alone(t_philo *philo, t_meal *meal);
+#include "philo.h"
+
+static t_bool	manage_meal(t_philo *philo, t_meal *meal);
+static t_bool	sleep_and_think(t_philo *philo);
+static t_bool	die_alone(t_philo *philo, t_meal *meal);
 
 void	*m_philo(void *ptr)
 {
@@ -30,7 +31,7 @@ void	*m_philo(void *ptr)
 	{
 		if (!manage_meal(philo, &meal))
 			return (NULL);
-		if (!sleep_and_think(philo, meal.last))
+		if (!sleep_and_think(philo))
 			return (NULL);
 	}
 	return (ptr);
@@ -53,45 +54,41 @@ void	*m_philo_time(void *ptr)
 		i++;
 		if (i >= philo->arg->eatend)
 			return (ptr);
-		if (!sleep_and_think(philo, meal.last))
+		if (!sleep_and_think(philo))
 			return (NULL);
 	}
 	return (ptr);
 }
 
-static void	*manage_meal(t_philo *philo, t_meal *meal)
+static t_bool	manage_meal(t_philo *philo, t_meal *meal)
 {
 	t_ltime	diff;
 
 	if (!fork_lock(philo))
-		return (NULL);
+		return (FALSE);
 	gettimeofday(&meal->actual, NULL);
 	diff = diff_timeval(meal->actual, meal->last);
 	if (diff > philo->arg->dietime)
-		return (undertaker(philo, meal->actual, NULL));
+		return (undertaker(philo, meal->actual));
 	meal->last = meal->actual;
 	if (!print_eating(meal->actual, philo))
-	{
-		fork_unlock(&philo->fork);
-		return (NULL);
-	}
+		return (fork_unlock(&philo->fork));
 	usleep(philo->arg->eattime);
 	fork_unlock(&philo->fork);
-	return (philo);
+	return (TRUE);
 }
 
-static void	*sleep_and_think(t_philo *philo, t_tv last)
+static t_bool	sleep_and_think(t_philo *philo)
 {
-	(void)last;
 	if (!print_sleeping(philo))
-		return (NULL);
+		return (FALSE);
 	usleep(philo->arg->sleeptime);
 	if (!print_thinking(philo))
-		return (NULL);
-	return (philo);
+		return (FALSE);
+	return (TRUE);
 }
 
-static void	*die_alone(t_philo *philo, t_meal *meal)
+static t_bool	die_alone(t_philo *philo, t_meal *meal)
 {
 	t_ltime	diff;
 
@@ -101,7 +98,7 @@ static void	*die_alone(t_philo *philo, t_meal *meal)
 		gettimeofday(&meal->actual, NULL);
 		diff = diff_timeval(meal->actual, meal->last);
 		if (diff > philo->arg->dietime)
-			return (undertaker(philo, meal->actual, NULL));
+			return (undertaker(philo, meal->actual));
 	}
-	return (philo);
+	return (TRUE);
 }

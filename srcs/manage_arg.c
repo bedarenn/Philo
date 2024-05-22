@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   manage_arg.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bedarenn <bedarenn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bedarenn <bedarenn@student.42angouleme.fr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 14:58:02 by bedarenn          #+#    #+#             */
-/*   Updated: 2024/03/09 11:51:16 by bedarenn         ###   ########.fr       */
+/*   Updated: 2024/05/22 10:37:22 by bedarenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <philo.h>
+#include "philo.h"
 #include <limits.h>
 #include <unistd.h>
 

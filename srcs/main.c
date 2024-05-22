@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bedarenn <bedarenn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bedarenn <bedarenn@student.42angouleme.fr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 15:37:24 by bedarenn          #+#    #+#             */
-/*   Updated: 2024/03/09 13:15:05 by bedarenn         ###   ########.fr       */
+/*   Updated: 2024/05/22 10:37:33 by bedarenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <philo.h>
 #include <unistd.h>
+
+#include "philo.h"
 
 int	main(int argc, char **argv)
 {
