@@ -6,7 +6,7 @@
 #    By: bedarenn <bedarenn@student.42angouleme.fr> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/25 23:28:11 by bedarenn          #+#    #+#              #
-#    Updated: 2024/05/22 10:50:14 by bedarenn         ###   ########.fr        #
+#    Updated: 2024/07/05 13:26:23 by bedarenn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,23 +14,23 @@ CC = clang
 
 DIR_SRCS = srcs/
 DIR_OBJS = objs/
-DIR_INCL = headers/
+DIR_INCL = hdrs/
 DIR_LIBS = libs/
 
 SRCS = \
-	philo_utils.c \
-	thread_laucher.c \
-	print_philo_emoji.c \
-	manage_arg.c \
-	manage_fork.c \
-	manage_thrd.c \
-	manage_philo.c \
-	philo.c \
+	w_tools.c \
+	w_arg.c \
+	w_thrd.c \
+	thrd_lauch.c \
+	m_philo.c \
+	m_philo_print.c \
+	m_philo_action.c \
+	undertaker.c \
 	main.c
 
 OBJS = $(addprefix $(DIR_OBJS), $(SRCS:%.c=%.o))
 
-CFLAGS = -Wall -Wextra -Werror# -g #-fsanitize=thread
+CFLAGS = -Wall -Wextra -Werror #-g #-fsanitize=thread
 IFLAGS = -I$(DIR_INCL)
 LFLAGS = -L$(DIR_LIBS) -lpthread
 
@@ -46,7 +46,7 @@ $(DIR_OBJS)%.o: $(DIR_SRCS)%.c
 	$(CC) $(CFLAGS) $(IFLAGS) -c $^ -o $@
 
 clean:
-	rm -f $(OBJS)
+	rm -rf $(DIR_OBJS)
 
 fclean: clean
 	rm -f $(NAME)

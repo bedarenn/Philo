@@ -5,39 +5,35 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bedarenn <bedarenn@student.42angouleme.fr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/27 15:37:24 by bedarenn          #+#    #+#             */
-/*   Updated: 2024/05/22 10:37:33 by bedarenn         ###   ########.fr       */
+/*   Created: 2024/07/04 16:43:07 by bedarenn          #+#    #+#             */
+/*   Updated: 2024/07/05 14:58:26 by bedarenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdio.h>
 
 #include "philo.h"
 
+int	w_error(void)
+{
+	printf("Error\n");
+	return (1);
+}
+
 int	main(int argc, char **argv)
 {
-	t_thrd	*philos;
-	int		count;
 	t_arg	arg;
+	t_ltime	count;
+	t_thrd	*list;
 
 	if (argc != 5 && argc != 6)
-		return (1);
+		return (w_error());
 	count = w_atoi(argv[1]);
-	arg = set_arg(argc, argv + 2);
-	if (!check_arg(count, arg))
-		return (1);
-	philos = create_philos(count, &arg);
-	if (!philos)
-		return (1);
-	arg.end = 0;
-	pthread_mutex_init(&arg.m_end, NULL);
-	pthread_mutex_init(&arg.m_print, NULL);
-	gettimeofday(&arg.start, NULL);
-	if (argc == 5)
-		list_map(philos, &lauch_thrd);
-	else
-		list_map(philos, &lauch_thrd_time);
-	list_map(philos, &wait_thrd);
-	free_philos(philos);
+	if (count <= 0 || !init_arg(&arg, argc, argv))
+		return (w_error());
+	list = create_philos(count, &arg);
+	gettimeofday(&arg.var.start, NULL);
+	list_map(list, lauch_thrd);
+	clear_thrd(&list);
 	return (0);
 }
