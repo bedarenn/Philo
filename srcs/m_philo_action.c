@@ -6,7 +6,7 @@
 /*   By: bedarenn <bedarenn@student.42angouleme.fr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 18:17:23 by bedarenn          #+#    #+#             */
-/*   Updated: 2024/07/05 15:11:17 by bedarenn         ###   ########.fr       */
+/*   Updated: 2024/07/05 17:04:47 by bedarenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,12 @@
 
 #include "philo.h"
 
-static void	*m_philo_lock_left(t_philo *philo);
-static void	*m_philo_lock_right(t_philo *philo);
+static void	*m_philo_lock(t_philo *philo);
 
 void	*m_philo_eat(t_philo *philo)
 {
-	if (philo->id % 2)
-	{
-		if (!m_philo_lock_right(philo))
-			return (NULL);
-	}
-	else
-	{
-		if (!m_philo_lock_left(philo))
-			return (NULL);
-	}
+	if (!m_philo_lock(philo))
+		return (NULL);
 	if (!print_eat(philo))
 	{
 		pthread_mutex_unlock(&philo->cutlery.left);
@@ -44,7 +35,7 @@ void	*m_philo_eat(t_philo *philo)
 	return (philo);
 }
 
-static void	*m_philo_lock_left(t_philo *philo)
+static void	*m_philo_lock(t_philo *philo)
 {
 	if (philo->rules->var.end)
 		return (NULL);
@@ -61,28 +52,6 @@ static void	*m_philo_lock_left(t_philo *philo)
 		pthread_mutex_unlock(philo->cutlery.right);
 		return (NULL);
 	}
-	return (philo);
-}
-
-static void	*m_philo_lock_right(t_philo *philo)
-{
-	if (philo->rules->var.end)
-		return (NULL);
-	pthread_mutex_lock(philo->cutlery.right);
-	if (!undertaker(philo))
-	{
-		pthread_mutex_unlock(philo->cutlery.right);
-		return (NULL);
-	}
-	print_fork(philo);
-	pthread_mutex_lock(&philo->cutlery.left);
-	if (!undertaker(philo))
-	{
-		pthread_mutex_unlock(&philo->cutlery.left);
-		pthread_mutex_unlock(philo->cutlery.right);
-		return (NULL);
-	}
-	print_fork(philo);
 	return (philo);
 }
 
