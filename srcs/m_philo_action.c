@@ -6,7 +6,7 @@
 /*   By: bedarenn <bedarenn@student.42angouleme.fr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 18:17:23 by bedarenn          #+#    #+#             */
-/*   Updated: 2024/07/05 17:04:47 by bedarenn         ###   ########.fr       */
+/*   Updated: 2024/07/07 16:56:50 by bedarenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	*m_philo_eat(t_philo *philo)
 
 static void	*m_philo_lock(t_philo *philo)
 {
-	if (philo->rules->var.end)
+	if (!undertaker(philo))
 		return (NULL);
 	pthread_mutex_lock(&philo->cutlery.left);
 	if (!undertaker(philo) || !print_fork(philo))
