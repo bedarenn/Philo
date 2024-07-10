@@ -6,7 +6,7 @@
 /*   By: bedarenn <bedarenn@student.42angouleme.fr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 18:17:23 by bedarenn          #+#    #+#             */
-/*   Updated: 2024/07/09 12:50:26 by bedarenn         ###   ########.fr       */
+/*   Updated: 2024/07/10 17:06:44 by bedarenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,3 @@ void	*m_philo_sleep(t_philo *philo)
 		return (NULL);
 	return (philo);
 }
-
