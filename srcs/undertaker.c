@@ -6,7 +6,7 @@
 /*   By: bedarenn <bedarenn@student.42angouleme.fr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 12:17:30 by bedarenn          #+#    #+#             */
-/*   Updated: 2024/07/07 16:47:13 by bedarenn         ###   ########.fr       */
+/*   Updated: 2024/07/10 16:58:23 by bedarenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ void	*print_died(t_philo *philo)
 		printf("%06li | %zu | died             %s\n",
 			diff, philo->id, "\xF0\x9F\x92\x80");
 		pthread_mutex_unlock(&philo->rules->var.m_print);
-		write(1, "IC4\n", 4);
 	}
 	pthread_mutex_unlock(&philo->rules->var.m_end);
 	return (NULL);

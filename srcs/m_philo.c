@@ -6,7 +6,7 @@
 /*   By: bedarenn <bedarenn@student.42angouleme.fr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 17:41:47 by bedarenn          #+#    #+#             */
-/*   Updated: 2024/07/05 17:05:25 by bedarenn         ###   ########.fr       */
+/*   Updated: 2024/07/10 17:04:38 by bedarenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ static void	*philo(t_philo *philo)
 		return (NULL);
 	}
 	gettimeofday(&philo->meal, NULL);
-	if (!(philo->id % 2))
-		usleep(100);
+	if ((philo->id % 2))
+		usleep(philo->rules->dietime / 2);
 	philo->i = 0;
 	while (1)
 	{
