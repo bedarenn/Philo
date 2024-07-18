@@ -1,0 +1,44 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   m_philo.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bedarenn <bedarenn@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/04 17:41:47 by bedarenn          #+#    #+#             */
+/*   Updated: 2024/07/18 17:37:56 by bedarenn         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "unistd.h"
+
+#include "philo.h"
+
+void		*m_philo(void *ptr);
+
+static void	*philo(t_philo *philo);
+
+void	*m_philo(void *ptr)
+{
+	return (philo(ptr));
+}
+
+static void	*philo(t_philo *philo)
+{
+	set_pvar(&philo->i, 0);
+	set_pvar(&philo->meal, get_time());
+	if (&philo->cutlery.left == philo->cutlery.right)
+		wati_sleep(philo, philo->rules->dietime);
+	if ((philo->id & 1))
+		wati_sleep(philo, philo->rules->eattime * 0.9 + 1);
+	while (check_end(philo))
+	{
+		if (!m_philo_meal(philo))
+			return (NULL);
+		if (!check_i(philo))
+			break ;
+		if (!m_philo_sleep(philo))
+			return (NULL);
+	}
+	return (philo);
+}

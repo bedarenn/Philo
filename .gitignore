@@ -1,6 +1,0 @@
-.vscode
-*.o
-*.a
-philo
-.nfs*
-test*
