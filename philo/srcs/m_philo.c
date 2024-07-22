@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   m_philo.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bedarenn <bedarenn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bedarenn <bedarenn@student.42angouleme.fr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 17:41:47 by bedarenn          #+#    #+#             */
-/*   Updated: 2024/07/18 17:37:56 by bedarenn         ###   ########.fr       */
+/*   Updated: 2024/07/22 17:50:29 by bedarenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ void	*m_philo(void *ptr)
 
 static void	*philo(t_philo *philo)
 {
-	set_pvar(&philo->i, 0);
-	set_pvar(&philo->meal, get_time());
 	if (&philo->cutlery.left == philo->cutlery.right)
 		wati_sleep(philo, philo->rules->dietime);
 	if ((philo->id & 1))

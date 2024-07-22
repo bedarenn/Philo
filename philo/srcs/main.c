@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bedarenn <bedarenn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bedarenn <bedarenn@student.42angouleme.fr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 16:43:07 by bedarenn          #+#    #+#             */
-/*   Updated: 2024/07/18 17:35:29 by bedarenn         ###   ########.fr       */
+/*   Updated: 2024/07/22 17:51:18 by bedarenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int	main(int argc, char **argv)
 	list = thrd_create(count, &arg);
 	arg.var.start = get_time();
 	thrd_laucher(list);
-	usleep(MS);
 	thrd_join(list, count);
 	thrd_delete(&list);
 	return (0);

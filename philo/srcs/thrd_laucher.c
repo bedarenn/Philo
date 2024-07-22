@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   thrd_laucher.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bedarenn <bedarenn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bedarenn <bedarenn@student.42angouleme.fr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 17:39:12 by bedarenn          #+#    #+#             */
-/*   Updated: 2024/07/18 17:33:16 by bedarenn         ###   ########.fr       */
+/*   Updated: 2024/07/22 17:50:56 by bedarenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ static void	list_map(t_thrd *list)
 {
 	while (list)
 	{
+		set_pvar(&list->philo.i, 0);
+		set_pvar(&list->philo.meal, get_time());
 		if (pthread_create(&list->pthread, NULL, &m_philo, &list->philo))
 			printf("ERR\n");
 		list = list->next;
