@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bedarenn <bedarenn@student.42angouleme.fr> +#+  +:+       +#+        */
+/*   By: bedarenn <bedarenn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 16:43:07 by bedarenn          #+#    #+#             */
-/*   Updated: 2024/07/22 17:51:18 by bedarenn         ###   ########.fr       */
+/*   Updated: 2024/07/24 18:49:33 by bedarenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,17 @@ int	main(int argc, char **argv)
 	if (count <= 0 || !init_arg(&arg, argc, argv))
 		return (w_error());
 	list = thrd_create(count, &arg);
+	if (!list)
+		return (w_error());
 	arg.var.start = get_time();
-	thrd_laucher(list);
+	if (thrd_laucher(list))
+	{
+		pthread_mutex_lock(&arg.var.m_end);
+		arg.var.end = true;
+		pthread_mutex_unlock(&arg.var.m_end);
+		thrd_delete(&list);
+		return (w_error());
+	}
 	thrd_join(list, count);
 	thrd_delete(&list);
 	return (0);

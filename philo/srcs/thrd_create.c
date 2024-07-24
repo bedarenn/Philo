@@ -6,7 +6,7 @@
 /*   By: bedarenn <bedarenn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 17:27:42 by bedarenn          #+#    #+#             */
-/*   Updated: 2024/07/18 17:53:54 by bedarenn         ###   ########.fr       */
+/*   Updated: 2024/07/24 18:43:44 by bedarenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,10 @@ t_thrd	*thrd_create(t_ltime count, t_arg *arg)
 	{
 		new = new_thrd(++i, arg);
 		if (!new)
+		{
+			thrd_delete(&first);
 			return (NULL);
+		}
 		last->philo.cutlery.right = &new->philo.cutlery.left;
 		last->next = new;
 		last = new;
@@ -46,14 +49,17 @@ static t_thrd	*new_thrd(size_t id, t_arg *arg)
 	t_thrd	*ptr;
 
 	ptr = malloc(sizeof(t_thrd));
-	if (ptr)
+	if (!ptr)
+		return (NULL);
+	ptr->next = NULL;
+	ptr->philo.id = id;
+	ptr->philo.rules = arg;
+	if (pthread_mutex_init(&ptr->philo.cutlery.left, NULL)
+		|| pthread_mutex_init(&ptr->philo.meal.mutex, NULL)
+		|| pthread_mutex_init(&ptr->philo.i.mutex, NULL))
 	{
-		ptr->next = NULL;
-		ptr->philo.id = id;
-		ptr->philo.rules = arg;
-		pthread_mutex_init(&ptr->philo.cutlery.left, NULL);
-		pthread_mutex_init(&ptr->philo.meal.mutex, NULL);
-		pthread_mutex_init(&ptr->philo.i.mutex, NULL);
+		free(ptr);
+		return (NULL);
 	}
 	return (ptr);
 }
