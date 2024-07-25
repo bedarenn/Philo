@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   thrd_laucher.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bedarenn <bedarenn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bedarenn <bedarenn@student.42angouleme.fr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 17:39:12 by bedarenn          #+#    #+#             */
-/*   Updated: 2024/07/24 18:46:44 by bedarenn         ###   ########.fr       */
+/*   Updated: 2024/07/25 15:52:12 by bedarenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   thrd_delete.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bedarenn <bedarenn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bedarenn <bedarenn@student.42angouleme.fr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 14:16:01 by bedarenn          #+#    #+#             */
-/*   Updated: 2024/07/18 17:37:19 by bedarenn         ###   ########.fr       */
+/*   Updated: 2024/07/25 15:52:32 by bedarenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ static void	_thrd_delete(t_thrd *list)
 {
 	if (list)
 	{
-		pthread_join(list->pthread, NULL);
+		if (list->pthread)
+			pthread_join(list->pthread, NULL);
 		_thrd_delete(list->next);
 		free(list);
 	}

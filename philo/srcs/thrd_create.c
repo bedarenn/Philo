@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   thrd_create.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bedarenn <bedarenn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bedarenn <bedarenn@student.42angouleme.fr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 17:27:42 by bedarenn          #+#    #+#             */
-/*   Updated: 2024/07/24 18:43:44 by bedarenn         ###   ########.fr       */
+/*   Updated: 2024/07/25 15:50:57 by bedarenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ static t_thrd	*new_thrd(size_t id, t_arg *arg)
 	ptr = malloc(sizeof(t_thrd));
 	if (!ptr)
 		return (NULL);
+	ptr->pthread = 0;
 	ptr->next = NULL;
 	ptr->philo.id = id;
 	ptr->philo.rules = arg;
