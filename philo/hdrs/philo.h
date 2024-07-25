@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bedarenn <bedarenn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bedarenn <bedarenn@student.42angouleme.fr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 16:43:23 by bedarenn          #+#    #+#             */
-/*   Updated: 2024/07/24 18:49:43 by bedarenn         ###   ########.fr       */
+/*   Updated: 2024/07/25 17:09:43 by bedarenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	*check_meal(t_philo *philo);
 bool	init_arg(t_arg *arg, int argc, char **argv);
 
 t_thrd	*thrd_create(t_ltime count, t_arg *arg);
-t_thrd	*thrd_laucher(t_thrd *thrd);
+bool	thrd_laucher(t_thrd *thrd);
 void	thrd_join(t_thrd *list, t_ltime count);
 void	thrd_delete(t_thrd **list);
 

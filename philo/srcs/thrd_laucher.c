@@ -6,30 +6,30 @@
 /*   By: bedarenn <bedarenn@student.42angouleme.fr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 17:39:12 by bedarenn          #+#    #+#             */
-/*   Updated: 2024/07/25 15:52:12 by bedarenn         ###   ########.fr       */
+/*   Updated: 2024/07/25 17:11:46 by bedarenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-t_thrd			*thrd_laucher(t_thrd *thrd);
+bool			thrd_laucher(t_thrd *thrd);
 
-static t_thrd	*list_map(t_thrd *list);
+bool			list_map(t_thrd *list);
 
-t_thrd	*thrd_laucher(t_thrd *thrd)
+bool	thrd_laucher(t_thrd *thrd)
 {
 	return (list_map(thrd));
 }
 
-static t_thrd	*list_map(t_thrd *list)
+bool	list_map(t_thrd *list)
 {
 	while (list)
 	{
 		set_pvar(&list->philo.i, 0);
 		set_pvar(&list->philo.meal, get_time());
 		if (pthread_create(&list->pthread, NULL, &m_philo, &list->philo))
-			return (NULL);
+			return (false);
 		list = list->next;
 	}
-	return (list);
+	return (true);
 }

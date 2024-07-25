@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bedarenn <bedarenn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bedarenn <bedarenn@student.42angouleme.fr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 16:43:07 by bedarenn          #+#    #+#             */
-/*   Updated: 2024/07/24 18:49:33 by bedarenn         ###   ########.fr       */
+/*   Updated: 2024/07/25 17:10:29 by bedarenn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	main(int argc, char **argv)
 	if (!list)
 		return (w_error());
 	arg.var.start = get_time();
-	if (thrd_laucher(list))
+	if (!thrd_laucher(list))
 	{
 		pthread_mutex_lock(&arg.var.m_end);
 		arg.var.end = true;
